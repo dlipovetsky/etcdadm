@@ -32,7 +32,7 @@ container-build:
 	docker run --rm -e VERSION_OVERRIDE=${VERSION_OVERRIDE} -v $(PWD):$(PACKAGE_GOPATH) -w $(PACKAGE_GOPATH) $(GIT_STORAGE_MOUNT) golang:1.12 /bin/bash -c "make ensure && make"
 
 $(BIN):
-	GO111MODULE=on go build -ldflags "$(LDFLAGS)"
+	GO111MODULE=on GOARCH=arm64 go build -ldflags "$(LDFLAGS)"
 
 clean:
 	rm -f $(BIN) plantuml.jar
